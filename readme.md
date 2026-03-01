@@ -49,7 +49,7 @@ Setup and Running Locally
 
 Clone the repository
 
-git clone <your-repo-url>
+git clone <https://github.com/ShishirBhandari614/news-agency.git>
 cd news-agency
 
 Create a .env file
