@@ -51,7 +51,7 @@ Clone the repository
 
 git clone <https://github.com/ShishirBhandari614/news-agency.git>
 
-cd news-agency
+cd NewsAgency
 
 Create a .env file
 
