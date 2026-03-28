@@ -41,10 +41,13 @@ def _log(state: NewsState, message: str) -> NewsState:
 PLANNER_PROMPT = ChatPromptTemplate.from_messages([
     ("system",
      "You are a senior news editor and strategic planner.\n"
+     "TODAY IS: {today}. THE CURRENT YEAR IS: {year}.\n"
+     "ABSOLUTE RULE: Every research_query you write MUST contain the year {year}.\n"
+     "NEVER write queries with years 2022, 2023, or 2024. Only {year}.\n"
      "Given a topic and memory context, produce a structured JSON plan.\n"
      "Return ONLY valid JSON with these keys:\n"
      '{{"plan": "<2-3 sentence editorial plan>", '
-     '"research_queries": ["<query1>", "<query2>", "<query3>"], '
+     '"research_queries": ["<topic> {year}", "<topic> latest {year}", "<topic> current {year}"], '
      '"required_sections": ["<section1>", ...], '
      '"output_format": "<article|brief|newsletter|social>"}}\n'
      "Choose output_format based on topic nature:\n"
@@ -52,18 +55,25 @@ PLANNER_PROMPT = ChatPromptTemplate.from_messages([
      "- In-depth → article\n"
      "- Curated digest → newsletter\n"
      "- Viral/trendy → social"),
-    ("human", "Topic: {topic}\n\nMemory context:\n{memory_context}"),
+    ("human", "Today is {today}. Year is {year}.\nTopic: {topic}\n\nMemory context:\n{memory_context}"),
 ])
 
 RESEARCHER_PROMPT = ChatPromptTemplate.from_messages([
     ("system",
      "You are a diligent news researcher.\n"
-     "Given a topic, an editorial plan, and raw web search results, write comprehensive research notes.\n"
-     "Also extract a list of key factual claims the writer will use.\n"
+     "TODAY IS: {today}. THE CURRENT YEAR IS: {year}.\n"
+     "CRITICAL RULES:\n"
+     "1. Only treat facts from {year} as current. Everything older is historical context.\n"
+     "2. If search results are mostly from 2022-2024, you MUST write this warning at the top of research_notes:\n"
+     "   'DATA WARNING: No {year} results found. Facts below are from [year] and may be outdated.'\n"
+     "3. Never present old facts as current without flagging their year.\n"
+     "4. Include the source year next to every key fact you write.\n"
+     "Given a topic, editorial plan, and web search results, write research notes.\n"
+     "Also extract key factual claims the writer will use.\n"
      "Return ONLY valid JSON:\n"
-     '{{"research_notes": "<detailed notes>", "extracted_claims": ["<claim1>", "<claim2>", ...]}}\n'
-     "Be factual. Do not invent. If evidence is thin, say so."),
-    ("human", "Topic: {topic}\nPlan: {plan}\n\nSearch Results:\n{search_results}"),
+     '{{"research_notes": "<notes — include year of each fact>", "extracted_claims": ["<claim (year)>", ...]}}\n'
+     "Be factual. Do not invent. If data is thin or old, say so clearly."),
+    ("human", "Today is {today}. Year is {year}.\nTopic: {topic}\nPlan: {plan}\n\nSearch Results:\n{search_results}"),
 ])
 
 WRITER_PROMPT = ChatPromptTemplate.from_messages([
@@ -104,13 +114,15 @@ EDITOR_PROMPT = ChatPromptTemplate.from_messages([
 PUBLISHER_PROMPT = ChatPromptTemplate.from_messages([
     ("system",
      "You are a digital publisher. Format the article for publication.\n"
+     "TODAY'S PUBLICATION DATE IS: {today}. Use THIS date as the dateline.\n"
+     "CRITICAL: Never use any date from inside the article as the dateline. Only use {today}.\n"
      "Output format type: {output_format}\n"
-     "- article: HEADLINE in ALL-CAPS, BYLINE (By AI News Agency), DATELINE ({today}), clean paragraphs\n"
+     "- article: HEADLINE in ALL-CAPS, newline, By AI News Agency, newline, {today}, newline, clean paragraphs\n"
      "- brief: SHORT HEADLINE, 2-3 tight paragraphs, key takeaway bullet\n"
      "- newsletter: Section header, intro, bullets, sign-off\n"
      "- social: 3-5 tweet-style posts with hashtags\n"
      "Return ONLY the final formatted content."),
-    ("human", "Edited article:\n{edited}"),
+    ("human", "Publication date: {today}.\nEdited article:\n{edited}"),
 ])
 
 
@@ -128,8 +140,15 @@ def planner_node(state: NewsState, config: RunnableConfig, *, store: BaseStore) 
     state["memory_context"] = memory_context
 
     from datetime import date as _date
+    _today = _date.today().strftime("%B %d, %Y")
+    _year  = str(_date.today().year)
     chain = PLANNER_PROMPT | llm
-    output = chain.invoke({"topic": state["topic"], "memory_context": memory_context, "today": _date.today().strftime("%B %d, %Y")})
+    output = chain.invoke({
+        "topic": state["topic"],
+        "memory_context": memory_context,
+        "today": _today,
+        "year": _year,
+    })
 
     try:
         clean = output.content.replace("```json", "").replace("```", "").strip()
@@ -156,16 +175,27 @@ def researcher_node(state: NewsState) -> NewsState:
     from datetime import date as _date
     current_year = _date.today().year
     all_results = []
+
+    # Remove any old year references from queries and force current year
+    import re
     for query in (state.get("research_queries") or [state["topic"]])[:3]:
-        # Append current year if not already present so DDG returns fresher results
-        if str(current_year) not in query and str(current_year - 1) not in query:
-            query = f"{query} {current_year}"
+        # Strip any 4-digit years from the query and replace with current year
+        query_clean = re.sub(r'\b20\d{2}\b', '', query).strip()
+        query_clean = f"{query_clean} {current_year}"
         try:
-            results = ddg.invoke(query)
+            results = ddg.invoke(query_clean)
             for r in results:
                 all_results.append(f"[{r.get('title','?')}] {r.get('snippet','')} ({r.get('link','')})")
         except Exception:
             pass
+
+    # Also always do one direct search with topic + current year as safety net
+    try:
+        direct = ddg.invoke(f"{state['topic']} {current_year}")
+        for r in direct:
+            all_results.append(f"[{r.get('title','?')}] {r.get('snippet','')} ({r.get('link','')})")
+    except Exception:
+        pass
 
     search_text = "\n".join(all_results) if all_results else "No search results available."
 
@@ -176,6 +206,7 @@ def researcher_node(state: NewsState) -> NewsState:
         "plan": state.get("plan", ""),
         "search_results": search_text,
         "today": _date.today().strftime("%B %d, %Y"),
+        "year": str(_date.today().year),
     })
 
     try:

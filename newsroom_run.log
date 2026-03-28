@@ -684,3 +684,472 @@
 2026-03-19 22:28:14,660 | INFO | EDITOR done.
 2026-03-19 22:28:14,662 | INFO | PUBLISHER formatting final output...
 2026-03-19 22:28:35,607 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:03:55,039 | INFO | PLANNER starting — topic: nepal election 2026 result
+2026-03-24 23:04:00,378 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:04:00,387 | INFO | PLANNER done. Format=article | Queries=['Nepal 2026 election results', 'Nepal political analysis 2026', 'impact of 2026 Nepal elections']
+2026-03-24 23:04:00,389 | INFO | RESEARCHER fetching web results...
+2026-03-24 23:04:00,848 | WARNING | Impersonate 'chrome_118' does not exist, using 'random'
+2026-03-24 23:04:01,152 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%202026%20election%20results)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%202026%20election%20results')")
+2026-03-24 23:04:01,439 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-24 23:04:02,273 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal+2026+election+results&limit=1 200
+2026-03-24 23:04:03,519 | INFO | response: https://search.yahoo.com/search;_ylt=YVhm7HrFah-X-Hmkct8FU6HY;_ylu=lQqJAlbs4SiO1rk23Q0Fq5PoUobyafvBH8WRjic3OjA6vkk?p=Nepal+2026+election+results&btf=y 200
+2026-03-24 23:04:03,872 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20political%20analysis%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20political%20analysis%202026')")
+2026-03-24 23:04:04,798 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal+political+analysis+2026&limit=1 200
+2026-03-24 23:04:05,027 | INFO | response: https://search.brave.com/search?q=Nepal+political+analysis+2026&source=web&tf=py 200
+2026-03-24 23:04:05,130 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%202026%20Nepal%20elections)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%202026%20Nepal%20elections')")
+2026-03-24 23:04:06,057 | INFO | response: https://grokipedia.com/api/typeahead?query=impact+of+2026+Nepal+elections&limit=1 200
+2026-03-24 23:04:06,361 | INFO | response: https://search.yahoo.com/search;_ylt=o3Rtxi7FYfidV9Jn-CTL3GY2;_ylu=_OnhRJKps077aRqytjUpnBWhjVsv3y0K8OdeLsc9IVSm0Xc?p=impact+of+2026+Nepal+elections&btf=y 200
+2026-03-24 23:04:17,039 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:04:17,039 | INFO | RESEARCHER done. Claims extracted: 9
+2026-03-24 23:04:17,043 | INFO | WRITER drafting article...
+2026-03-24 23:04:26,154 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:04:26,157 | INFO | WRITER done.
+2026-03-24 23:04:26,159 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-24 23:04:26,185 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%202026%20Nepalese%20general%20election%20was%20held%20on%20March%205%2C%202026.)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%202026%20Nepalese%20general%20election%20was%20held%20on%20March%205%2C%202026.')")
+2026-03-24 23:04:26,915 | INFO | response: https://grokipedia.com/api/typeahead?query=The+2026+Nepalese+general+election+was+held+on+March+5%2C+2026.&limit=1 200
+2026-03-24 23:04:27,438 | INFO | response: https://search.brave.com/search?q=The+2026+Nepalese+general+election+was+held+on+March+5%2C+2026.&source=web&tf=py 200
+2026-03-24 23:04:27,505 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%2C%20led%20by%20Balendra%20Shah%2C%20won%20a%20clear%20majority%20i%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%2C%20led%20by%20Balendra%20Shah%2C%20won%20a%20clear%20majority%20i%202026')")
+2026-03-24 23:04:28,243 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Rastriya+Swatantra+Party+%28RSP%29%2C+led+by+Balendra+Shah%2C+won+a+clear+majority+i+2026&limit=1 200
+2026-03-24 23:04:28,709 | INFO | response: https://search.yahoo.com/search;_ylt=QyYgbS0jFIquRfRsLBOrbiTD;_ylu=wFOlGyNwSAqlaDGsV6fUF7OPgIqKBq_uo7m_7Li4PihrJ88?p=The+Rastriya+Swatantra+Party+%28RSP%29%2C+led+by+Balendra+Shah%2C+won+a+clear+majority+i+2026&btf=y 200
+2026-03-24 23:04:29,251 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20election%20was%20preceded%20by%20acute%20socio-economic%20instability%20and%20a%20breakdown%20of%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20election%20was%20preceded%20by%20acute%20socio-economic%20instability%20and%20a%20breakdown%20of%202026')")
+2026-03-24 23:04:30,052 | INFO | response: https://grokipedia.com/api/typeahead?query=The+election+was+preceded+by+acute+socio-economic+instability+and+a+breakdown+of+2026&limit=1 200
+2026-03-24 23:04:30,387 | INFO | response: https://yandex.com/search/site/?text=The+election+was+preceded+by+acute+socio-economic+instability+and+a+breakdown+of+2026&web=1&searchid=6447614 200
+2026-03-24 23:04:30,500 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Public%20frustration%20over%20rampant%20corruption%20and%20high%20youth%20unemployment%20peaked%20by%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Public%20frustration%20over%20rampant%20corruption%20and%20high%20youth%20unemployment%20peaked%20by%202026')")
+2026-03-24 23:04:30,708 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-24 23:04:31,484 | INFO | response: https://grokipedia.com/api/typeahead?query=Public+frustration+over+rampant+corruption+and+high+youth+unemployment+peaked+by+2026&limit=1 200
+2026-03-24 23:04:32,829 | INFO | response: https://search.brave.com/search?q=Public+frustration+over+rampant+corruption+and+high+youth+unemployment+peaked+by+2026&source=web&tf=py 200
+2026-03-24 23:04:32,905 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20RSP%27s%20victory%20represents%20a%20generational%20break%20from%20traditional%20political%20eli%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20RSP%27s%20victory%20represents%20a%20generational%20break%20from%20traditional%20political%20eli%202026')")
+2026-03-24 23:04:33,701 | INFO | response: https://www.google.com/search?q=The+RSP%27s+victory+represents+a+generational+break+from+traditional+political+eli+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-24 23:04:33,882 | INFO | response: https://grokipedia.com/api/typeahead?query=The+RSP%27s+victory+represents+a+generational+break+from+traditional+political+eli+2026&limit=1 200
+2026-03-24 23:04:34,964 | INFO | response: https://www.mojeek.com/search?q=The+RSP%27s+victory+represents+a+generational+break+from+traditional+political+eli+2026 200
+2026-03-24 23:04:35,351 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-24 23:04:36,902 | INFO | response: https://search.brave.com/search?q=The+RSP%27s+victory+represents+a+generational+break+from+traditional+political+eli+2026&source=web&tf=py 200
+2026-03-24 23:04:36,998 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2018.9%20million%20voters%20were%20registered%2C%20with%20an%20estimated%20voter%20turnout%20%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2018.9%20million%20voters%20were%20registered%2C%20with%20an%20estimated%20voter%20turnout%20%202026')")
+2026-03-24 23:04:37,185 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-24 23:04:37,309 | INFO | response: https://grokipedia.com/api/typeahead?query=A+total+of+18.9+million+voters+were+registered%2C+with+an+estimated+voter+turnout++2026&limit=1 200
+2026-03-24 23:04:37,912 | INFO | response: https://www.google.com/search?q=A+total+of+18.9+million+voters+were+registered%2C+with+an+estimated+voter+turnout++2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-24 23:04:39,548 | INFO | response: https://search.brave.com/search?q=A+total+of+18.9+million+voters+were+registered%2C+with+an+estimated+voter+turnout++2026&source=web&tf=py 200
+2026-03-24 23:04:39,630 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-24 23:04:39,655 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20election%202026%20result%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20election%202026%20result%202026')")
+2026-03-24 23:04:40,559 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+election+2026+result+2026&limit=1 200
+2026-03-24 23:04:40,753 | INFO | response: https://yandex.com/search/site/?text=nepal+election+2026+result+2026&web=1&searchid=9319471 200
+2026-03-24 23:04:53,147 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:04:53,151 | INFO | FACT_CHECKER verdict=fail | Issues=1 | Searches done=7
+2026-03-24 23:04:53,264 | INFO | WRITER drafting article...
+2026-03-24 23:05:02,595 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:05:02,596 | INFO | WRITER done.
+2026-03-24 23:05:02,598 | INFO | FACT_CHECKER running (attempt 2/2)...
+2026-03-24 23:05:02,635 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%202026%20Nepalese%20general%20election%20was%20held%20on%20March%205%2C%202026.)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%202026%20Nepalese%20general%20election%20was%20held%20on%20March%205%2C%202026.')")
+2026-03-24 23:05:02,968 | INFO | response: https://grokipedia.com/api/typeahead?query=The+2026+Nepalese+general+election+was+held+on+March+5%2C+2026.&limit=1 200
+2026-03-24 23:05:04,035 | INFO | response: https://search.yahoo.com/search;_ylt=5EZXSitWfUO-KwoBHFgn44rM;_ylu=XyJ6jdJFXW0-vMty3ZV2bqnMsR8pInLfnGvfynSNac2sRC0?p=The+2026+Nepalese+general+election+was+held+on+March+5%2C+2026.&btf=y 200
+2026-03-24 23:05:04,368 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%2C%20led%20by%20Balendra%20Shah%2C%20won%20a%20clear%20majority%20i%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%2C%20led%20by%20Balendra%20Shah%2C%20won%20a%20clear%20majority%20i%202026')")
+2026-03-24 23:05:05,144 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Rastriya+Swatantra+Party+%28RSP%29%2C+led+by+Balendra+Shah%2C+won+a+clear+majority+i+2026&limit=1 200
+2026-03-24 23:05:05,589 | INFO | response: https://search.yahoo.com/search;_ylt=4WacyfEl9aRcArFRPZCeW5JS;_ylu=3CiuQOKOTcGdWr3ypEsBMj8ugzvndjgwNe5pOCxPuS_ZQSQ?p=The+Rastriya+Swatantra+Party+%28RSP%29%2C+led+by+Balendra+Shah%2C+won+a+clear+majority+i+2026&btf=y 200
+2026-03-24 23:05:06,109 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20election%20was%20preceded%20by%20acute%20socio-economic%20instability%20and%20a%20breakdown%20of%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20election%20was%20preceded%20by%20acute%20socio-economic%20instability%20and%20a%20breakdown%20of%202026')")
+2026-03-24 23:05:06,528 | INFO | response: https://grokipedia.com/api/typeahead?query=The+election+was+preceded+by+acute+socio-economic+instability+and+a+breakdown+of+2026&limit=1 200
+2026-03-24 23:05:06,851 | INFO | response: https://www.mojeek.com/search?q=The+election+was+preceded+by+acute+socio-economic+instability+and+a+breakdown+of+2026 200
+2026-03-24 23:05:07,066 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Public%20frustration%20over%20rampant%20corruption%20and%20high%20youth%20unemployment%20peaked%20by%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Public%20frustration%20over%20rampant%20corruption%20and%20high%20youth%20unemployment%20peaked%20by%202026')")
+2026-03-24 23:05:07,461 | INFO | response: https://grokipedia.com/api/typeahead?query=Public+frustration+over+rampant+corruption+and+high+youth+unemployment+peaked+by+2026&limit=1 200
+2026-03-24 23:05:08,170 | INFO | response: https://yandex.com/search/site/?text=Public+frustration+over+rampant+corruption+and+high+youth+unemployment+peaked+by+2026&web=1&searchid=8813213 200
+2026-03-24 23:05:08,270 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20RSP%27s%20victory%20represents%20a%20generational%20break%20from%20traditional%20political%20eli%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20RSP%27s%20victory%20represents%20a%20generational%20break%20from%20traditional%20political%20eli%202026')")
+2026-03-24 23:05:08,682 | INFO | response: https://grokipedia.com/api/typeahead?query=The+RSP%27s+victory+represents+a+generational+break+from+traditional+political+eli+2026&limit=1 200
+2026-03-24 23:05:09,493 | INFO | response: https://yandex.com/search/site/?text=The+RSP%27s+victory+represents+a+generational+break+from+traditional+political+eli+2026&web=1&searchid=2666949 200
+2026-03-24 23:05:09,598 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2018.9%20million%20voters%20were%20registered%2C%20with%20an%20estimated%20voter%20turnout%20%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2018.9%20million%20voters%20were%20registered%2C%20with%20an%20estimated%20voter%20turnout%20%202026')")
+2026-03-24 23:05:10,361 | INFO | response: https://www.google.com/search?q=A+total+of+18.9+million+voters+were+registered%2C+with+an+estimated+voter+turnout++2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-24 23:05:11,656 | INFO | response: https://grokipedia.com/api/typeahead?query=A+total+of+18.9+million+voters+were+registered%2C+with+an+estimated+voter+turnout++2026&limit=1 200
+2026-03-24 23:05:12,786 | INFO | response: https://yandex.com/search/site/?text=A+total+of+18.9+million+voters+were+registered%2C+with+an+estimated+voter+turnout++2026&web=1&searchid=1332398 200
+2026-03-24 23:05:12,837 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-24 23:05:12,868 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20election%202026%20result%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20election%202026%20result%202026')")
+2026-03-24 23:05:13,091 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-24 23:05:13,273 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+election+2026+result+2026&limit=1 200
+2026-03-24 23:05:14,425 | INFO | response: https://search.brave.com/search?q=nepal+election+2026+result+2026&source=web&tf=py 200
+2026-03-24 23:05:29,420 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:05:29,424 | INFO | FACT_CHECKER verdict=fail | Issues=2 | Searches done=7
+2026-03-24 23:05:29,433 | INFO | EDITOR polishing article...
+2026-03-24 23:05:41,241 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-24 23:05:41,247 | INFO | EDITOR done.
+2026-03-24 23:05:41,250 | INFO | PUBLISHER formatting final output...
+2026-03-24 23:06:04,875 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:04:27,554 | INFO | PLANNER starting — topic: nepal new government ministers
+2026-03-28 01:04:34,361 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:04:34,378 | INFO | PLANNER done. Format=article | Queries=['Nepal new government ministers October 2023', 'background of Nepal ministers 2023', 'impact of new ministers on Nepal politics']
+2026-03-28 01:04:34,380 | INFO | RESEARCHER fetching web results...
+2026-03-28 01:04:34,741 | WARNING | Impersonate 'firefox_135' does not exist, using 'random'
+2026-03-28 01:04:34,937 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20new%20government%20ministers%20October%202023%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20new%20government%20ministers%20October%202023%202026')")
+2026-03-28 01:04:35,253 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal+new+government+ministers+October+2023+2026&limit=1 200
+2026-03-28 01:04:36,152 | INFO | response: https://search.yahoo.com/search;_ylt=wKr-DY5GA94P0DdDNbDjbQEt;_ylu=4hP2DmVvLPAQHitkcRaFQ2OwIgz_1h3MMJH37u-Hr0n0bss?p=Nepal+new+government+ministers+October+2023+2026&btf=y 200
+2026-03-28 01:04:36,752 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=background%20of%20Nepal%20ministers%202023%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=background%20of%20Nepal%20ministers%202023%202026')")
+2026-03-28 01:04:37,451 | INFO | response: https://grokipedia.com/api/typeahead?query=background+of+Nepal+ministers+2023+2026&limit=1 200
+2026-03-28 01:04:37,807 | INFO | response: https://www.mojeek.com/search?q=background+of+Nepal+ministers+2023+2026 200
+2026-03-28 01:04:38,007 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%20new%20ministers%20on%20Nepal%20politics%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%20new%20ministers%20on%20Nepal%20politics%202026')")
+2026-03-28 01:04:38,374 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:04:38,923 | INFO | response: https://grokipedia.com/api/typeahead?query=impact+of+new+ministers+on+Nepal+politics+2026&limit=1 200
+2026-03-28 01:04:39,908 | INFO | response: https://www.mojeek.com/search?q=impact+of+new+ministers+on+Nepal+politics+2026 200
+2026-03-28 01:04:48,665 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:04:48,666 | INFO | RESEARCHER done. Claims extracted: 6
+2026-03-28 01:04:48,669 | INFO | WRITER drafting article...
+2026-03-28 01:04:59,606 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:04:59,607 | INFO | WRITER done.
+2026-03-28 01:04:59,608 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-28 01:04:59,632 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%27s%20interim%20government%20was%20formed%20on%20September%2012%2C%202025%2C%20after%20anti-corrupti%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%27s%20interim%20government%20was%20formed%20on%20September%2012%2C%202025%2C%20after%20anti-corrupti%202026')")
+2026-03-28 01:05:00,597 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal%27s+interim+government+was+formed+on+September+12%2C+2025%2C+after+anti-corrupti+2026&limit=1 200
+2026-03-28 01:05:00,847 | INFO | response: https://search.yahoo.com/search;_ylt=-BaK_prqmB79sF_cM3mTPajz;_ylu=KU7qJF8xrlM9HodxbbYU1y4naY6kow1k1mWnNwP-DqXWZWY?p=Nepal%27s+interim+government+was+formed+on+September+12%2C+2025%2C+after+anti-corrupti+2026&btf=y 200
+2026-03-28 01:05:01,163 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Prime%20Minister%20Karki%20is%20the%20first%20female%20premier%20of%20Nepal.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Prime%20Minister%20Karki%20is%20the%20first%20female%20premier%20of%20Nepal.%202026')")
+2026-03-28 01:05:02,074 | INFO | response: https://grokipedia.com/api/typeahead?query=Prime+Minister+Karki+is+the+first+female+premier+of+Nepal.+2026&limit=1 200
+2026-03-28 01:05:02,377 | INFO | response: https://search.yahoo.com/search;_ylt=X4sZ1ZyN25MuU-NcnQH1knYY;_ylu=k3Z8E1DogLPzvMpc58Cso1fvHxhYF2lj_MIiNzK4rhrCeRg?p=Prime+Minister+Karki+is+the+first+female+premier+of+Nepal.+2026&btf=y 200
+2026-03-28 01:05:02,969 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20interim%20government%27s%20primary%20mandate%20is%20to%20conduct%20parliamentary%20elections%20b%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20interim%20government%27s%20primary%20mandate%20is%20to%20conduct%20parliamentary%20elections%20b%202026')")
+2026-03-28 01:05:03,856 | INFO | response: https://www.mojeek.com/search?q=The+interim+government%27s+primary+mandate+is+to+conduct+parliamentary+elections+b+2026 200
+2026-03-28 01:05:05,708 | INFO | response: https://grokipedia.com/api/typeahead?query=The+interim+government%27s+primary+mandate+is+to+conduct+parliamentary+elections+b+2026&limit=1 200
+2026-03-28 01:05:05,729 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Four%20new%20ministers%20were%20sworn%20in%20on%20September%2022%2C%202025.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Four%20new%20ministers%20were%20sworn%20in%20on%20September%2022%2C%202025.%202026')")
+2026-03-28 01:05:06,617 | INFO | response: https://www.google.com/search?q=Four+new+ministers+were+sworn+in+on+September+22%2C+2025.+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:05:06,667 | INFO | response: https://grokipedia.com/api/typeahead?query=Four+new+ministers+were+sworn+in+on+September+22%2C+2025.+2026&limit=1 200
+2026-03-28 01:05:07,761 | INFO | response: https://yandex.com/search/site/?text=Four+new+ministers+were+sworn+in+on+September+22%2C+2025.+2026&web=1&searchid=1474802 200
+2026-03-28 01:05:07,828 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Kulman%20Ghising%20will%20oversee%20the%20ministries%20of%20Energy%2C%20Water%20Resources%2C%20and%20Irrig%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Kulman%20Ghising%20will%20oversee%20the%20ministries%20of%20Energy%2C%20Water%20Resources%2C%20and%20Irrig%202026')")
+2026-03-28 01:05:08,612 | INFO | response: https://www.mojeek.com/search?q=Kulman+Ghising+will+oversee+the+ministries+of+Energy%2C+Water+Resources%2C+and+Irrig+2026 200
+2026-03-28 01:05:08,776 | INFO | response: https://grokipedia.com/api/typeahead?query=Kulman+Ghising+will+oversee+the+ministries+of+Energy%2C+Water+Resources%2C+and+Irrig+2026&limit=1 200
+2026-03-28 01:05:08,811 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20government%20faces%20significant%20challenges%20in%20restoring%20political%20stability%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20government%20faces%20significant%20challenges%20in%20restoring%20political%20stability%202026')")
+2026-03-28 01:05:09,746 | INFO | response: https://grokipedia.com/api/typeahead?query=The+new+government+faces+significant+challenges+in+restoring+political+stability+2026&limit=1 200
+2026-03-28 01:05:10,331 | INFO | response: https://search.brave.com/search?q=The+new+government+faces+significant+challenges+in+restoring+political+stability+2026&source=web&tf=py 200
+2026-03-28 01:05:10,378 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-28 01:05:10,392 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20government%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20government%20ministers%202026')")
+2026-03-28 01:05:10,717 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+government+ministers+2026&limit=1 200
+2026-03-28 01:05:11,524 | INFO | response: https://search.brave.com/search?q=nepal+new+government+ministers+2026&source=web&tf=py 200
+2026-03-28 01:05:21,064 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:05:21,066 | INFO | FACT_CHECKER verdict=fail | Issues=1 | Searches done=7
+2026-03-28 01:05:21,175 | INFO | WRITER drafting article...
+2026-03-28 01:05:32,450 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:05:32,452 | INFO | WRITER done.
+2026-03-28 01:05:32,454 | INFO | FACT_CHECKER running (attempt 2/2)...
+2026-03-28 01:05:32,483 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%27s%20interim%20government%20was%20formed%20on%20September%2012%2C%202025%2C%20after%20anti-corrupti%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%27s%20interim%20government%20was%20formed%20on%20September%2012%2C%202025%2C%20after%20anti-corrupti%202026')")
+2026-03-28 01:05:32,871 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal%27s+interim+government+was+formed+on+September+12%2C+2025%2C+after+anti-corrupti+2026&limit=1 200
+2026-03-28 01:05:33,773 | INFO | response: https://search.yahoo.com/search;_ylt=rme2h8Wnu0Lvr7Jbgb9A-ZEy;_ylu=Nha1JJIAC4gG0xlmGuc-0oTgTOXrxmfRf_rxyU4FOEUXwc8?p=Nepal%27s+interim+government+was+formed+on+September+12%2C+2025%2C+after+anti-corrupti+2026&btf=y 200
+2026-03-28 01:05:34,113 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Prime%20Minister%20Karki%20is%20the%20first%20female%20premier%20of%20Nepal.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Prime%20Minister%20Karki%20is%20the%20first%20female%20premier%20of%20Nepal.%202026')")
+2026-03-28 01:05:34,495 | INFO | response: https://grokipedia.com/api/typeahead?query=Prime+Minister+Karki+is+the+first+female+premier+of+Nepal.+2026&limit=1 200
+2026-03-28 01:05:35,005 | INFO | response: https://www.mojeek.com/search?q=Prime+Minister+Karki+is+the+first+female+premier+of+Nepal.+2026 200
+2026-03-28 01:05:35,216 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20interim%20government%27s%20primary%20mandate%20is%20to%20conduct%20parliamentary%20elections%20b%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20interim%20government%27s%20primary%20mandate%20is%20to%20conduct%20parliamentary%20elections%20b%202026')")
+2026-03-28 01:05:35,922 | INFO | response: https://www.mojeek.com/search?q=The+interim+government%27s+primary+mandate+is+to+conduct+parliamentary+elections+b+2026 200
+2026-03-28 01:05:36,843 | INFO | response: https://grokipedia.com/api/typeahead?query=The+interim+government%27s+primary+mandate+is+to+conduct+parliamentary+elections+b+2026&limit=1 200
+2026-03-28 01:05:36,867 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Four%20new%20ministers%20were%20sworn%20in%20on%20September%2022%2C%202025.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Four%20new%20ministers%20were%20sworn%20in%20on%20September%2022%2C%202025.%202026')")
+2026-03-28 01:05:37,292 | INFO | response: https://grokipedia.com/api/typeahead?query=Four+new+ministers+were+sworn+in+on+September+22%2C+2025.+2026&limit=1 200
+2026-03-28 01:05:37,839 | INFO | response: https://search.brave.com/search?q=Four+new+ministers+were+sworn+in+on+September+22%2C+2025.+2026&source=web&tf=py 200
+2026-03-28 01:05:37,933 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Kulman%20Ghising%20will%20oversee%20the%20ministries%20of%20Energy%2C%20Water%20Resources%2C%20and%20Irrig%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Kulman%20Ghising%20will%20oversee%20the%20ministries%20of%20Energy%2C%20Water%20Resources%2C%20and%20Irrig%202026')")
+2026-03-28 01:05:38,142 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:05:38,337 | INFO | response: https://grokipedia.com/api/typeahead?query=Kulman+Ghising+will+oversee+the+ministries+of+Energy%2C+Water+Resources%2C+and+Irrig+2026&limit=1 200
+2026-03-28 01:05:39,435 | INFO | response: https://www.google.com/search?q=Kulman+Ghising+will+oversee+the+ministries+of+Energy%2C+Water+Resources%2C+and+Irrig+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:05:40,709 | INFO | response: https://search.yahoo.com/search;_ylt=MiHva-JVLWRFAdbnxwwKpL0l;_ylu=mnyBkZ_MJ-TuaMKejdHEYgDh8zRf_YBR7Od8nJPiIfIDr6I?p=Kulman+Ghising+will+oversee+the+ministries+of+Energy%2C+Water+Resources%2C+and+Irrig+2026&btf=y 200
+2026-03-28 01:05:41,055 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20government%20faces%20significant%20challenges%20in%20restoring%20political%20stability%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20government%20faces%20significant%20challenges%20in%20restoring%20political%20stability%202026')")
+2026-03-28 01:05:41,467 | INFO | response: https://grokipedia.com/api/typeahead?query=The+new+government+faces+significant+challenges+in+restoring+political+stability+2026&limit=1 200
+2026-03-28 01:05:42,092 | INFO | response: https://yandex.com/search/site/?text=The+new+government+faces+significant+challenges+in+restoring+political+stability+2026&web=1&searchid=3149845 200
+2026-03-28 01:05:42,155 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-28 01:05:42,175 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20government%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20government%20ministers%202026')")
+2026-03-28 01:05:42,529 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+government+ministers+2026&limit=1 200
+2026-03-28 01:05:42,723 | INFO | response: https://www.google.com/search?q=nepal+new+government+ministers+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:05:42,909 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:05:43,759 | INFO | response: https://www.mojeek.com/search?q=nepal+new+government+ministers+2026 200
+2026-03-28 01:05:53,739 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:05:53,743 | INFO | FACT_CHECKER verdict=fail | Issues=1 | Searches done=7
+2026-03-28 01:05:53,751 | INFO | EDITOR polishing article...
+2026-03-28 01:06:05,050 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:06:05,051 | INFO | EDITOR done.
+2026-03-28 01:06:05,053 | INFO | PUBLISHER formatting final output...
+2026-03-28 01:06:30,431 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:16:38,870 | INFO | PLANNER starting — topic: nepal recent ministers
+2026-03-28 01:16:44,235 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:16:44,240 | INFO | PLANNER done. Format=article | Queries=['recent minister appointments in Nepal 2023', 'Nepal government cabinet changes October 2023', "impact of new ministers on Nepal's policies"]
+2026-03-28 01:16:44,242 | INFO | RESEARCHER fetching web results...
+2026-03-28 01:16:44,328 | WARNING | Impersonate 'chrome_119' does not exist, using 'random'
+2026-03-28 01:16:44,367 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=recent%20minister%20appointments%20in%20Nepal%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=recent%20minister%20appointments%20in%20Nepal%202026')")
+2026-03-28 01:16:45,353 | INFO | response: https://grokipedia.com/api/typeahead?query=recent+minister+appointments+in+Nepal+2026&limit=1 200
+2026-03-28 01:16:45,453 | INFO | response: https://yandex.com/search/site/?text=recent+minister+appointments+in+Nepal+2026&web=1&searchid=4403847 200
+2026-03-28 01:16:45,546 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20government%20cabinet%20changes%20October%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20government%20cabinet%20changes%20October%202026')")
+2026-03-28 01:16:46,505 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal+government+cabinet+changes+October+2026&limit=1 200
+2026-03-28 01:16:46,618 | INFO | response: https://yandex.com/search/site/?text=Nepal+government+cabinet+changes+October+2026&web=1&searchid=9354076 200
+2026-03-28 01:16:46,706 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%20new%20ministers%20on%20Nepal%27s%20policies%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%20new%20ministers%20on%20Nepal%27s%20policies%202026')")
+2026-03-28 01:16:47,065 | INFO | response: https://grokipedia.com/api/typeahead?query=impact+of+new+ministers+on+Nepal%27s+policies+2026&limit=1 200
+2026-03-28 01:16:47,677 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 200 OK"
+2026-03-28 01:16:47,702 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20recent%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20recent%20ministers%202026')")
+2026-03-28 01:16:48,549 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+recent+ministers+2026&limit=1 200
+2026-03-28 01:16:48,986 | INFO | response: https://www.mojeek.com/search?q=nepal+recent+ministers+2026 200
+2026-03-28 01:16:55,387 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:16:55,388 | INFO | RESEARCHER done. Claims extracted: 5
+2026-03-28 01:16:55,390 | INFO | WRITER drafting article...
+2026-03-28 01:17:04,396 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:17:04,397 | INFO | WRITER done.
+2026-03-28 01:17:04,400 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-28 01:17:04,419 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20is%20the%20youngest%20Prime%20Minister%20of%20Nepal%2C%20appointed%20after%20a%20landsli%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20is%20the%20youngest%20Prime%20Minister%20of%20Nepal%2C%20appointed%20after%20a%20landsli%202026')")
+2026-03-28 01:17:04,924 | INFO | response: https://grokipedia.com/api/typeahead?query=Balendra+Shah+is+the+youngest+Prime+Minister+of+Nepal%2C+appointed+after+a+landsli+2026&limit=1 200
+2026-03-28 01:17:05,174 | INFO | response: https://www.mojeek.com/search?q=Balendra+Shah+is+the+youngest+Prime+Minister+of+Nepal%2C+appointed+after+a+landsli+2026 200
+2026-03-28 01:17:06,323 | INFO | response: https://www.google.com/search?q=Balendra+Shah+is+the+youngest+Prime+Minister+of+Nepal%2C+appointed+after+a+landsli+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:17:07,382 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 200 OK"
+2026-03-28 01:17:07,404 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Shah%20secured%20the%20highest%20number%20of%20votes%20for%20a%20candidate%20in%20Nepal%27s%20parliamentar%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Shah%20secured%20the%20highest%20number%20of%20votes%20for%20a%20candidate%20in%20Nepal%27s%20parliamentar%202026')")
+2026-03-28 01:17:08,568 | INFO | response: https://grokipedia.com/api/typeahead?query=Shah+secured+the+highest+number+of+votes+for+a+candidate+in+Nepal%27s+parliamentar+2026&limit=1 200
+2026-03-28 01:17:08,614 | INFO | response: https://search.yahoo.com/search;_ylt=uAy93QABVRTdnOK8WDlj2riH;_ylu=66qYjrDuRVovtKWXBvLcOPiqo2DuqgU0D9MUIUri_9t50JM?p=Shah+secured+the+highest+number+of+votes+for+a+candidate+in+Nepal%27s+parliamentar+2026&btf=y 200
+2026-03-28 01:17:08,887 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20cabinet%20under%20Prime%20Minister%20Shah%20is%20dominated%20by%20technocrats.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20cabinet%20under%20Prime%20Minister%20Shah%20is%20dominated%20by%20technocrats.%202026')")
+2026-03-28 01:17:09,208 | INFO | response: https://grokipedia.com/api/typeahead?query=The+new+cabinet+under+Prime+Minister+Shah+is+dominated+by+technocrats.+2026&limit=1 200
+2026-03-28 01:17:09,921 | INFO | response: https://www.google.com/search?q=The+new+cabinet+under+Prime+Minister+Shah+is+dominated+by+technocrats.+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:17:11,188 | INFO | response: https://search.brave.com/search?q=The+new+cabinet+under+Prime+Minister+Shah+is+dominated+by+technocrats.+2026&source=web&tf=py 200
+2026-03-28 01:17:11,258 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20political%20changes%20in%20Nepal%20follow%20a%20youth-led%20uprising%20that%20ousted%20the%20previ%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20political%20changes%20in%20Nepal%20follow%20a%20youth-led%20uprising%20that%20ousted%20the%20previ%202026')")
+2026-03-28 01:17:12,243 | INFO | response: https://grokipedia.com/api/typeahead?query=The+political+changes+in+Nepal+follow+a+youth-led+uprising+that+ousted+the+previ+2026&limit=1 200
+2026-03-28 01:17:12,278 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 200 OK"
+2026-03-28 01:17:12,299 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20recent%20political%20changes%20in%20Nepal%20are%20occurring%20amid%20socio-economic%20instabil%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20recent%20political%20changes%20in%20Nepal%20are%20occurring%20amid%20socio-economic%20instabil%202026')")
+2026-03-28 01:17:13,202 | INFO | response: https://grokipedia.com/api/typeahead?query=The+recent+political+changes+in+Nepal+are+occurring+amid+socio-economic+instabil+2026&limit=1 200
+2026-03-28 01:17:13,312 | INFO | response: https://www.google.com/search?q=The+recent+political+changes+in+Nepal+are+occurring+amid+socio-economic+instabil+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:17:16,352 | INFO | response: https://search.yahoo.com/search;_ylt=1_4EV2ilOwR55ETwhZNOoiWK;_ylu=gJg_A-Y-TfCeo96lJZ_1ZkW4X7Ysq1Q0Tk8CIEdyl0MgfwQ?p=The+recent+political+changes+in+Nepal+are+occurring+amid+socio-economic+instabil+2026&btf=y 200
+2026-03-28 01:17:18,295 | INFO | FACT_CHECKER searched 5 claim(s) individually.
+2026-03-28 01:17:18,320 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20recent%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20recent%20ministers%202026')")
+2026-03-28 01:17:18,672 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+recent+ministers+2026&limit=1 200
+2026-03-28 01:17:19,614 | INFO | response: https://www.google.com/search?q=nepal+recent+ministers+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:17:20,641 | INFO | response: https://yandex.com/search/site/?text=nepal+recent+ministers+2026&web=1&searchid=4350501 200
+2026-03-28 01:17:28,338 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:17:28,339 | INFO | FACT_CHECKER verdict=pass | Issues=0 | Searches done=6
+2026-03-28 01:17:28,348 | INFO | EDITOR polishing article...
+2026-03-28 01:17:39,131 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:17:39,132 | INFO | EDITOR done.
+2026-03-28 01:17:39,135 | INFO | PUBLISHER formatting final output...
+2026-03-28 01:18:00,945 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:19:27,092 | INFO | PLANNER starting — topic: nepal new home minister
+2026-03-28 01:19:32,454 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:19:32,455 | INFO | PLANNER done. Format=article | Queries=['Nepal new Home Minister background', 'Nepal Home Ministry responsibilities', 'impact of new Home Minister on Nepal security']
+2026-03-28 01:19:32,458 | INFO | RESEARCHER fetching web results...
+2026-03-28 01:19:32,484 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20new%20Home%20Minister%20background%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20new%20Home%20Minister%20background%202026')")
+2026-03-28 01:19:33,296 | INFO | response: https://www.google.com/search?q=Nepal+new+Home+Minister+background+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:19:33,792 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal+new+Home+Minister+background+2026&limit=1 200
+2026-03-28 01:19:34,870 | INFO | response: https://yandex.com/search/site/?text=Nepal+new+Home+Minister+background+2026&web=1&searchid=3192388 200
+2026-03-28 01:19:34,954 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20Home%20Ministry%20responsibilities%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Nepal%20Home%20Ministry%20responsibilities%202026')")
+2026-03-28 01:19:35,859 | INFO | response: https://www.google.com/search?q=Nepal+Home+Ministry+responsibilities+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:19:36,781 | INFO | response: https://grokipedia.com/api/typeahead?query=Nepal+Home+Ministry+responsibilities+2026&limit=1 200
+2026-03-28 01:19:37,897 | INFO | response: https://search.brave.com/search?q=Nepal+Home+Ministry+responsibilities+2026&source=web&tf=py 200
+2026-03-28 01:19:38,017 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%20new%20Home%20Minister%20on%20Nepal%20security%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=impact%20of%20new%20Home%20Minister%20on%20Nepal%20security%202026')")
+2026-03-28 01:19:38,935 | INFO | response: https://grokipedia.com/api/typeahead?query=impact+of+new+Home+Minister+on+Nepal+security+2026&limit=1 200
+2026-03-28 01:19:38,960 | INFO | response: https://www.mojeek.com/search?q=impact+of+new+Home+Minister+on+Nepal+security+2026 200
+2026-03-28 01:19:39,170 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20home%20minister%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20home%20minister%202026')")
+2026-03-28 01:19:40,099 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+home+minister+2026&limit=1 200
+2026-03-28 01:19:40,326 | INFO | response: https://www.mojeek.com/search?q=nepal+new+home+minister+2026 200
+2026-03-28 01:19:46,340 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:19:46,341 | INFO | RESEARCHER done. Claims extracted: 7
+2026-03-28 01:19:46,342 | INFO | WRITER drafting article...
+2026-03-28 01:19:55,534 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:19:55,535 | INFO | WRITER done.
+2026-03-28 01:19:55,537 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-28 01:19:55,563 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Rabin%20Mahato%20is%20the%20new%20Home%20Minister%20of%20Nepal.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Rabin%20Mahato%20is%20the%20new%20Home%20Minister%20of%20Nepal.%202026')")
+2026-03-28 01:19:56,351 | INFO | response: https://www.google.com/search?q=Rabin+Mahato+is+the+new+Home+Minister+of+Nepal.+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:19:56,485 | INFO | response: https://grokipedia.com/api/typeahead?query=Rabin+Mahato+is+the+new+Home+Minister+of+Nepal.+2026&limit=1 200
+2026-03-28 01:19:57,505 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 200 OK"
+2026-03-28 01:19:57,525 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Rabin%20Mahato%20is%20a%20member%20of%20the%20Pratinidhi%20Sabha%20from%20the%20Rastriya%20Swatantra%20Par%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Rabin%20Mahato%20is%20a%20member%20of%20the%20Pratinidhi%20Sabha%20from%20the%20Rastriya%20Swatantra%20Par%202026')")
+2026-03-28 01:19:58,037 | INFO | response: https://www.google.com/search?q=Rabin+Mahato+is+a+member+of+the+Pratinidhi+Sabha+from+the+Rastriya+Swatantra+Par+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:19:58,487 | INFO | response: https://grokipedia.com/api/typeahead?query=Rabin+Mahato+is+a+member+of+the+Pratinidhi+Sabha+from+the+Rastriya+Swatantra+Par+2026&limit=1 200
+2026-03-28 01:19:59,735 | INFO | response: https://search.yahoo.com/search;_ylt=TDlfIxKLhxLfO8X5KNo4ySbG;_ylu=6a9mOr_YOwl6VofYZu3NqwWrbLvr3nVUVcdGLJktk1c6fs8?p=Rabin+Mahato+is+a+member+of+the+Pratinidhi+Sabha+from+the+Rastriya+Swatantra+Par+2026&btf=y 200
+2026-03-28 01:20:00,029 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Mahato%20entered%20active%20politics%20in%202026.)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Mahato%20entered%20active%20politics%20in%202026.')")
+2026-03-28 01:20:00,751 | INFO | response: https://grokipedia.com/api/typeahead?query=Mahato+entered+active+politics+in+2026.&limit=1 200
+2026-03-28 01:20:01,126 | INFO | response: https://yandex.com/search/site/?text=Mahato+entered+active+politics+in+2026.&web=1&searchid=5807141 200
+2026-03-28 01:20:01,233 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20previous%20Home%20Minister%2C%20Ravi%20Lamichhane%2C%20faced%20corruption%20charges.%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20previous%20Home%20Minister%2C%20Ravi%20Lamichhane%2C%20faced%20corruption%20charges.%202026')")
+2026-03-28 01:20:02,460 | INFO | response: https://search.yahoo.com/search;_ylt=ttLVi3pXZehJQm2VL-AN6L4b;_ylu=iFjjd8E5s0AxsRNmug_QNrsdjromW63CeuoyzKJU99DSkik?p=The+previous+Home+Minister%2C+Ravi+Lamichhane%2C+faced+corruption+charges.+2026&btf=y 200
+2026-03-28 01:20:03,543 | INFO | response: https://grokipedia.com/api/typeahead?query=The+previous+Home+Minister%2C+Ravi+Lamichhane%2C+faced+corruption+charges.+2026&limit=1 200
+2026-03-28 01:20:03,559 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Home%20Minister%27s%20responsibilities%20include%20maintaining%20internal%20security%20and%20o%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Home%20Minister%27s%20responsibilities%20include%20maintaining%20internal%20security%20and%20o%202026')")
+2026-03-28 01:20:05,119 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 200 OK"
+2026-03-28 01:20:05,453 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Home+Minister%27s+responsibilities+include+maintaining+internal+security+and+o+2026&limit=1 200
+2026-03-28 01:20:05,472 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20cabinet%20held%20its%20first%20meeting%20shortly%20after%20Prime%20Minister%20Balendra%20Sha%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20new%20cabinet%20held%20its%20first%20meeting%20shortly%20after%20Prime%20Minister%20Balendra%20Sha%202026')")
+2026-03-28 01:20:05,885 | INFO | response: https://grokipedia.com/api/typeahead?query=The+new+cabinet+held+its+first+meeting+shortly+after+Prime+Minister+Balendra+Sha+2026&limit=1 200
+2026-03-28 01:20:06,191 | INFO | response: https://www.google.com/search?q=The+new+cabinet+held+its+first+meeting+shortly+after+Prime+Minister+Balendra+Sha+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:20:07,394 | INFO | response: https://search.yahoo.com/search;_ylt=7gkQuFuQr82fxxCSWo_9NQAd;_ylu=7s46KBjXf_qfYg-UQ8mh2ZqwkDdKAf2vCo75QdA-gzVxQNY?p=The+new+cabinet+held+its+first+meeting+shortly+after+Prime+Minister+Balendra+Sha+2026&btf=y 200
+2026-03-28 01:20:07,691 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-28 01:20:07,708 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20home%20minister%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20home%20minister%202026')")
+2026-03-28 01:20:08,064 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+home+minister+2026&limit=1 200
+2026-03-28 01:20:08,906 | INFO | response: https://search.brave.com/search?q=nepal+new+home+minister+2026&source=web&tf=py 200
+2026-03-28 01:20:16,052 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:20:16,053 | INFO | FACT_CHECKER verdict=pass | Issues=0 | Searches done=7
+2026-03-28 01:20:16,057 | INFO | EDITOR polishing article...
+2026-03-28 01:20:25,329 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:20:25,333 | INFO | EDITOR done.
+2026-03-28 01:20:25,335 | INFO | PUBLISHER formatting final output...
+2026-03-28 01:20:42,858 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:30:21,264 | INFO | PLANNER starting — topic: nepal new ministers
+2026-03-28 01:30:25,383 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:30:25,395 | INFO | PLANNER done. Format=article | Queries=['nepal new ministers 2026', 'nepal latest ministers 2026', 'nepal current ministers 2026']
+2026-03-28 01:30:25,398 | INFO | RESEARCHER fetching web results...
+2026-03-28 01:30:25,495 | WARNING | Impersonate 'chrome_119' does not exist, using 'random'
+2026-03-28 01:30:25,528 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:30:26,391 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:30:26,564 | INFO | response: https://yandex.com/search/site/?text=nepal+new+ministers+2026&web=1&searchid=9012773 200
+2026-03-28 01:30:26,635 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20latest%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20latest%20ministers%202026')")
+2026-03-28 01:30:26,995 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+latest+ministers+2026&limit=1 200
+2026-03-28 01:30:27,773 | INFO | response: https://www.mojeek.com/search?q=nepal+latest+ministers+2026 200
+2026-03-28 01:30:27,998 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20current%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20current%20ministers%202026')")
+2026-03-28 01:30:28,866 | INFO | response: https://www.mojeek.com/search?q=nepal+current+ministers+2026 200
+2026-03-28 01:30:28,895 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+current+ministers+2026&limit=1 200
+2026-03-28 01:30:29,078 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:30:29,409 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:30:29,641 | INFO | response: https://www.google.com/search?q=nepal+new+ministers+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:30:29,849 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:30:30,880 | INFO | response: https://yandex.com/search/site/?text=nepal+new+ministers+2026&web=1&searchid=1567628 200
+2026-03-28 01:30:37,711 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:30:37,712 | INFO | RESEARCHER done. Claims extracted: 3
+2026-03-28 01:30:37,717 | INFO | WRITER drafting article...
+2026-03-28 01:30:47,935 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:30:47,936 | INFO | WRITER done.
+2026-03-28 01:30:47,939 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-28 01:30:47,964 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026%20%28202)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026%20%28202')")
+2026-03-28 01:30:48,487 | INFO | response: https://www.google.com/search?q=Balendra+Shah+was+sworn+in+as+the+Prime+Minister+of+Nepal+on+March+27%2C+2026+%28202&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:30:48,928 | INFO | response: https://grokipedia.com/api/typeahead?query=Balendra+Shah+was+sworn+in+as+the+Prime+Minister+of+Nepal+on+March+27%2C+2026+%28202&limit=1 200
+2026-03-28 01:30:50,519 | INFO | response: https://search.brave.com/search?q=Balendra+Shah+was+sworn+in+as+the+Prime+Minister+of+Nepal+on+March+27%2C+2026+%28202&source=web&tf=py 200
+2026-03-28 01:30:50,617 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Minister%20Khanal%20stated%20that%20there%20would%20be%20no%20change%20in%20Nepal%27s%20foreign%20policy%20d%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Minister%20Khanal%20stated%20that%20there%20would%20be%20no%20change%20in%20Nepal%27s%20foreign%20policy%20d%202026')")
+2026-03-28 01:30:51,088 | INFO | response: https://search.brave.com/search?q=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&source=web&tf=py 429
+2026-03-28 01:30:51,569 | INFO | response: https://grokipedia.com/api/typeahead?query=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&limit=1 200
+2026-03-28 01:30:52,343 | INFO | response: https://www.google.com/search?q=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:30:52,568 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:30:53,428 | INFO | response: https://www.mojeek.com/search?q=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026 200
+2026-03-28 01:30:53,637 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Shah%27s%20government%20faces%20the%20responsibility%20of%20providing%20stable%20governance%20amidst%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Shah%27s%20government%20faces%20the%20responsibility%20of%20providing%20stable%20governance%20amidst%202026')")
+2026-03-28 01:30:53,991 | INFO | response: https://grokipedia.com/api/typeahead?query=Shah%27s+government+faces+the+responsibility+of+providing+stable+governance+amidst+2026&limit=1 200
+2026-03-28 01:30:54,507 | INFO | response: https://www.mojeek.com/search?q=Shah%27s+government+faces+the+responsibility+of+providing+stable+governance+amidst+2026 200
+2026-03-28 01:30:54,710 | INFO | FACT_CHECKER searched 3 claim(s) individually.
+2026-03-28 01:30:54,737 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:30:55,097 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:30:55,956 | INFO | response: https://search.yahoo.com/search;_ylt=_8dcqKlzUPTAnMrow66Ub3uc;_ylu=3HcE6Hkyoueq_LdkEgwlNGLo8S4KBiarYE58YdeHRu31uGU?p=nepal+new+ministers+2026&btf=y 200
+2026-03-28 01:31:01,783 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:31:01,785 | INFO | FACT_CHECKER verdict=fail | Issues=2 | Searches done=4
+2026-03-28 01:31:01,791 | INFO | WRITER drafting article...
+2026-03-28 01:31:11,863 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:31:11,867 | INFO | WRITER done.
+2026-03-28 01:31:11,869 | INFO | FACT_CHECKER running (attempt 2/2)...
+2026-03-28 01:31:11,895 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026%20%28202)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026%20%28202')")
+2026-03-28 01:31:12,313 | INFO | response: https://grokipedia.com/api/typeahead?query=Balendra+Shah+was+sworn+in+as+the+Prime+Minister+of+Nepal+on+March+27%2C+2026+%28202&limit=1 200
+2026-03-28 01:31:13,129 | INFO | response: https://search.yahoo.com/search;_ylt=r38yp9Y-dJGvMt8WlRjCg7si;_ylu=u01znBeyTTKKeVGwvGQ9YWJWflVIS365L2hkdNMiyfi-uBo?p=Balendra+Shah+was+sworn+in+as+the+Prime+Minister+of+Nepal+on+March+27%2C+2026+%28202&btf=y 200
+2026-03-28 01:31:13,519 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Minister%20Khanal%20stated%20that%20there%20would%20be%20no%20change%20in%20Nepal%27s%20foreign%20policy%20d%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Minister%20Khanal%20stated%20that%20there%20would%20be%20no%20change%20in%20Nepal%27s%20foreign%20policy%20d%202026')")
+2026-03-28 01:31:13,915 | INFO | response: https://search.brave.com/search?q=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&source=web&tf=py 429
+2026-03-28 01:31:15,178 | INFO | response: https://grokipedia.com/api/typeahead?query=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&limit=1 200
+2026-03-28 01:31:16,165 | INFO | response: https://www.google.com/search?q=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:31:17,421 | INFO | response: https://search.yahoo.com/search;_ylt=UfAaEI6bCPAgmo0MduQEQxgG;_ylu=g-5A6G1aTCzNMyKVWOCGXg0THDUB6RVWLMPs_Zuw7rRv4Cs?p=Minister+Khanal+stated+that+there+would+be+no+change+in+Nepal%27s+foreign+policy+d+2026&btf=y 200
+2026-03-28 01:31:17,712 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Shah%27s%20government%20faces%20the%20responsibility%20of%20providing%20stable%20governance%20amidst%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Shah%27s%20government%20faces%20the%20responsibility%20of%20providing%20stable%20governance%20amidst%202026')")
+2026-03-28 01:31:17,933 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:31:18,077 | INFO | response: https://grokipedia.com/api/typeahead?query=Shah%27s+government+faces+the+responsibility+of+providing+stable+governance+amidst+2026&limit=1 200
+2026-03-28 01:31:18,551 | INFO | response: https://www.google.com/search?q=Shah%27s+government+faces+the+responsibility+of+providing+stable+governance+amidst+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:31:19,617 | INFO | response: https://yandex.com/search/site/?text=Shah%27s+government+faces+the+responsibility+of+providing+stable+governance+amidst+2026&web=1&searchid=7257027 200
+2026-03-28 01:31:19,679 | INFO | FACT_CHECKER searched 3 claim(s) individually.
+2026-03-28 01:31:19,713 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:31:19,927 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:31:20,048 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:31:20,993 | INFO | response: https://yandex.com/search/site/?text=nepal+new+ministers+2026&web=1&searchid=3719064 200
+2026-03-28 01:31:25,531 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:31:25,531 | INFO | FACT_CHECKER verdict=pass | Issues=0 | Searches done=4
+2026-03-28 01:31:25,540 | INFO | EDITOR polishing article...
+2026-03-28 01:31:35,464 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:31:35,465 | INFO | EDITOR done.
+2026-03-28 01:31:35,466 | INFO | PUBLISHER formatting final output...
+2026-03-28 01:31:50,570 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:39:06,325 | INFO | PLANNER starting — topic: nepal new ministers
+2026-03-28 01:39:10,154 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:39:10,169 | INFO | PLANNER done. Format=article | Queries=['nepal new ministers 2026', 'nepal latest ministers 2026', 'nepal current ministers 2026']
+2026-03-28 01:39:10,169 | INFO | RESEARCHER fetching web results...
+2026-03-28 01:39:10,264 | WARNING | Impersonate 'chrome_124' does not exist, using 'random'
+2026-03-28 01:39:10,296 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:39:10,490 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:39:11,187 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:39:12,424 | INFO | response: https://search.yahoo.com/search;_ylt=piMYqHhn0BiJwhx_DzOTCw8M;_ylu=dWhFW6Ft_yyEs_gYfMvJeH-aHmXYLXFuWBzeCBCT78iK-Lc?p=nepal+new+ministers+2026&btf=y 200
+2026-03-28 01:39:13,091 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20latest%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20latest%20ministers%202026')")
+2026-03-28 01:39:14,188 | INFO | response: https://yandex.com/search/site/?text=nepal+latest+ministers+2026&web=1&searchid=8153385 200
+2026-03-28 01:39:15,806 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+latest+ministers+2026&limit=1 200
+2026-03-28 01:39:15,835 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20current%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20current%20ministers%202026')")
+2026-03-28 01:39:16,744 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+current+ministers+2026&limit=1 200
+2026-03-28 01:39:16,843 | INFO | response: https://yandex.com/search/site/?text=nepal+current+ministers+2026&web=1&searchid=1806877 200
+2026-03-28 01:39:16,917 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:39:17,266 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:39:17,926 | INFO | response: https://yandex.com/search/site/?text=nepal+new+ministers+2026&web=1&searchid=2672259 200
+2026-03-28 01:39:24,396 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:39:24,404 | INFO | RESEARCHER done. Claims extracted: 6
+2026-03-28 01:39:24,408 | INFO | WRITER drafting article...
+2026-03-28 01:39:38,020 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:39:38,021 | INFO | WRITER done.
+2026-03-28 01:39:38,024 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-28 01:39:38,047 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%2047th%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%2047th%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026')")
+2026-03-28 01:39:39,078 | INFO | response: https://grokipedia.com/api/typeahead?query=Balendra+Shah+was+sworn+in+as+the+47th+Prime+Minister+of+Nepal+on+March+27%2C+2026&limit=1 200
+2026-03-28 01:39:39,289 | INFO | response: https://search.yahoo.com/search;_ylt=Pg8vu3tUiIPPqEumHuFZUrSa;_ylu=8nY-ntxJcOPvei7wcEuvsihfwsefG94x6JhUYNcIgeVBu_o?p=Balendra+Shah+was+sworn+in+as+the+47th+Prime+Minister+of+Nepal+on+March+27%2C+2026&btf=y 200
+2026-03-28 01:39:39,592 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%20has%20finalized%20the%20names%20of%20ministers%20for%20the%20%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%20has%20finalized%20the%20names%20of%20ministers%20for%20the%20%202026')")
+2026-03-28 01:39:40,008 | INFO | response: https://search.brave.com/search?q=The+Rastriya+Swatantra+Party+%28RSP%29+has+finalized+the+names+of+ministers+for+the++2026&source=web&tf=py 429
+2026-03-28 01:39:40,403 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Rastriya+Swatantra+Party+%28RSP%29+has+finalized+the+names+of+ministers+for+the++2026&limit=1 200
+2026-03-28 01:39:40,583 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:39:41,694 | INFO | response: https://www.mojeek.com/search?q=The+Rastriya+Swatantra+Party+%28RSP%29+has+finalized+the+names+of+ministers+for+the++2026 200
+2026-03-28 01:39:41,944 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2014%20ministers%20were%20sworn%20in%20at%20a%20special%20ceremony%20%282026%29.)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2014%20ministers%20were%20sworn%20in%20at%20a%20special%20ceremony%20%282026%29.')")
+2026-03-28 01:39:42,770 | INFO | response: https://www.mojeek.com/search?q=A+total+of+14+ministers+were+sworn+in+at+a+special+ceremony+%282026%29. 200
+2026-03-28 01:39:42,890 | INFO | response: https://grokipedia.com/api/typeahead?query=A+total+of+14+ministers+were+sworn+in+at+a+special+ceremony+%282026%29.&limit=1 200
+2026-03-28 01:39:42,973 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Nepali%20Communist%20Party%2C%20led%20by%20Pushpa%20Kamal%20Dahal%2C%20won%2017%20seats%20in%20the%20recen%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Nepali%20Communist%20Party%2C%20led%20by%20Pushpa%20Kamal%20Dahal%2C%20won%2017%20seats%20in%20the%20recen%202026')")
+2026-03-28 01:39:43,396 | INFO | response: https://search.brave.com/search?q=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026&source=web&tf=py 429
+2026-03-28 01:39:44,059 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026&limit=1 200
+2026-03-28 01:39:44,819 | INFO | response: https://www.mojeek.com/search?q=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026 200
+2026-03-28 01:39:45,180 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:39:46,013 | INFO | response: https://www.google.com/search?q=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:39:47,096 | INFO | response: https://yandex.com/search/site/?text=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026&web=1&searchid=8573754 200
+2026-03-28 01:39:47,188 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Shram%20Sanskriti%20Party%2C%20led%20by%20Harka%20Sampang%2C%20qualified%20as%20a%20national%20party%20w%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Shram%20Sanskriti%20Party%2C%20led%20by%20Harka%20Sampang%2C%20qualified%20as%20a%20national%20party%20w%202026')")
+2026-03-28 01:39:47,394 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:39:47,534 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026&limit=1 200
+2026-03-28 01:39:48,285 | INFO | response: https://www.mojeek.com/search?q=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026 200
+2026-03-28 01:39:49,715 | INFO | response: https://search.yahoo.com/search;_ylt=ThWO9xDR6hurZxKqn_5wm6sY;_ylu=QuE7uaVqLORG6AwfxaODlVHI7hDhd__7heHIeD-4TXq3a9w?p=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026&btf=y 200
+2026-03-28 01:39:50,263 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=President%20Ramchandra%20Paudel%20administered%20the%20oath%20of%20office%20to%20the%20newly%20appoint%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=President%20Ramchandra%20Paudel%20administered%20the%20oath%20of%20office%20to%20the%20newly%20appoint%202026')")
+2026-03-28 01:39:51,034 | INFO | response: https://www.mojeek.com/search?q=President+Ramchandra+Paudel+administered+the+oath+of+office+to+the+newly+appoint+2026 200
+2026-03-28 01:39:51,263 | INFO | response: https://grokipedia.com/api/typeahead?query=President+Ramchandra+Paudel+administered+the+oath+of+office+to+the+newly+appoint+2026&limit=1 200
+2026-03-28 01:39:51,263 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-28 01:39:51,286 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:39:51,631 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:39:51,735 | INFO | response: https://search.brave.com/search?q=nepal+new+ministers+2026&source=web&tf=py 429
+2026-03-28 01:39:52,008 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:39:52,930 | INFO | response: https://www.mojeek.com/search?q=nepal+new+ministers+2026 200
+2026-03-28 01:40:02,374 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:40:02,374 | INFO | FACT_CHECKER verdict=fail | Issues=1 | Searches done=7
+2026-03-28 01:40:02,381 | INFO | WRITER drafting article...
+2026-03-28 01:40:11,018 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:40:11,020 | INFO | WRITER done.
+2026-03-28 01:40:11,023 | INFO | FACT_CHECKER running (attempt 2/2)...
+2026-03-28 01:40:11,053 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%2047th%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Balendra%20Shah%20was%20sworn%20in%20as%20the%2047th%20Prime%20Minister%20of%20Nepal%20on%20March%2027%2C%202026')")
+2026-03-28 01:40:11,548 | INFO | response: https://grokipedia.com/api/typeahead?query=Balendra+Shah+was+sworn+in+as+the+47th+Prime+Minister+of+Nepal+on+March+27%2C+2026&limit=1 200
+2026-03-28 01:40:11,894 | INFO | response: https://www.mojeek.com/search?q=Balendra+Shah+was+sworn+in+as+the+47th+Prime+Minister+of+Nepal+on+March+27%2C+2026 200
+2026-03-28 01:40:12,124 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%20has%20finalized%20the%20names%20of%20ministers%20for%20the%20%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Rastriya%20Swatantra%20Party%20%28RSP%29%20has%20finalized%20the%20names%20of%20ministers%20for%20the%20%202026')")
+2026-03-28 01:40:12,444 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Rastriya+Swatantra+Party+%28RSP%29+has+finalized+the+names+of+ministers+for+the++2026&limit=1 200
+2026-03-28 01:40:12,596 | INFO | response: https://search.brave.com/search?q=The+Rastriya+Swatantra+Party+%28RSP%29+has+finalized+the+names+of+ministers+for+the++2026&source=web&tf=py 429
+2026-03-28 01:40:13,444 | INFO | response: https://www.mojeek.com/search?q=The+Rastriya+Swatantra+Party+%28RSP%29+has+finalized+the+names+of+ministers+for+the++2026 200
+2026-03-28 01:40:13,652 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2014%20ministers%20were%20sworn%20in%20at%20a%20special%20ceremony%20%282026%29.)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=A%20total%20of%2014%20ministers%20were%20sworn%20in%20at%20a%20special%20ceremony%20%282026%29.')")
+2026-03-28 01:40:13,881 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:40:15,745 | INFO | response: https://grokipedia.com/api/typeahead?query=A+total+of+14+ministers+were+sworn+in+at+a+special+ceremony+%282026%29.&limit=1 200
+2026-03-28 01:40:17,044 | INFO | response: https://yandex.com/search/site/?text=A+total+of+14+ministers+were+sworn+in+at+a+special+ceremony+%282026%29.&web=1&searchid=3673606 200
+2026-03-28 01:40:17,131 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Nepali%20Communist%20Party%2C%20led%20by%20Pushpa%20Kamal%20Dahal%2C%20won%2017%20seats%20in%20the%20recen%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Nepali%20Communist%20Party%2C%20led%20by%20Pushpa%20Kamal%20Dahal%2C%20won%2017%20seats%20in%20the%20recen%202026')")
+2026-03-28 01:40:17,542 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026&limit=1 200
+2026-03-28 01:40:18,344 | INFO | response: https://search.yahoo.com/search;_ylt=lFIvmaQiwhxQQfgbitmMK2Ho;_ylu=V7FPNHxsTP_XCxq13GtXgoo2vkckPift-CpLI4g3NM3xiZw?p=The+Nepali+Communist+Party%2C+led+by+Pushpa+Kamal+Dahal%2C+won+17+seats+in+the+recen+2026&btf=y 200
+2026-03-28 01:40:18,760 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Shram%20Sanskriti%20Party%2C%20led%20by%20Harka%20Sampang%2C%20qualified%20as%20a%20national%20party%20w%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=The%20Shram%20Sanskriti%20Party%2C%20led%20by%20Harka%20Sampang%2C%20qualified%20as%20a%20national%20party%20w%202026')")
+2026-03-28 01:40:19,086 | INFO | response: https://grokipedia.com/api/typeahead?query=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026&limit=1 200
+2026-03-28 01:40:19,383 | INFO | response: https://www.google.com/search?q=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:40:20,047 | INFO | response: https://www.mojeek.com/search?q=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026 200
+2026-03-28 01:40:20,357 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:40:20,844 | INFO | response: https://search.brave.com/search?q=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026&source=web&tf=py 429
+2026-03-28 01:40:21,980 | INFO | response: https://yandex.com/search/site/?text=The+Shram+Sanskriti+Party%2C+led+by+Harka+Sampang%2C+qualified+as+a+national+party+w+2026&web=1&searchid=5491481 200
+2026-03-28 01:40:22,033 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=President%20Ramchandra%20Paudel%20administered%20the%20oath%20of%20office%20to%20the%20newly%20appoint%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=President%20Ramchandra%20Paudel%20administered%20the%20oath%20of%20office%20to%20the%20newly%20appoint%202026')")
+2026-03-28 01:40:22,550 | INFO | response: https://grokipedia.com/api/typeahead?query=President+Ramchandra+Paudel+administered+the+oath+of+office+to+the+newly+appoint+2026&limit=1 200
+2026-03-28 01:40:23,152 | INFO | response: https://www.google.com/search?q=President+Ramchandra+Paudel+administered+the+oath+of+office+to+the+newly+appoint+2026&filter=1&start=0&hl=wt-WT&lr=lang_wt&cr=countryWT&tbs=qdr%3Ay 403
+2026-03-28 01:40:23,342 | INFO | HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-03-28 01:40:24,096 | INFO | response: https://www.mojeek.com/search?q=President+Ramchandra+Paudel+administered+the+oath+of+office+to+the+newly+appoint+2026 200
+2026-03-28 01:40:24,284 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-28 01:40:24,306 | INFO | Error in engine grokipedia: DDGSException("ConnectError: ConnectError('error sending request for url (https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026)', 'https://wt.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=nepal%20new%20ministers%202026')")
+2026-03-28 01:40:24,698 | INFO | response: https://grokipedia.com/api/typeahead?query=nepal+new+ministers+2026&limit=1 200
+2026-03-28 01:40:25,547 | INFO | response: https://search.yahoo.com/search;_ylt=BwTHJOAV0tGyIJcS0f-R-lWn;_ylu=qOAKBf4xcikYOn6ecNqvzutv4BC7DhrejbT_Z7P2pXZ918I?p=nepal+new+ministers+2026&btf=y 200
+2026-03-28 01:40:35,041 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:40:35,041 | INFO | FACT_CHECKER verdict=fail | Issues=1 | Searches done=7
+2026-03-28 01:40:35,047 | INFO | EDITOR polishing article...
+2026-03-28 01:40:44,476 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:40:44,479 | INFO | EDITOR done.
+2026-03-28 01:40:44,480 | INFO | PUBLISHER formatting final output...
+2026-03-28 01:41:04,640 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:54:31,899 | INFO | PLANNER starting — topic: nepal new ministers
+2026-03-28 01:54:36,455 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:54:36,463 | INFO | PLANNER done. Format=article | Queries=['nepal new ministers 2026', 'nepal latest ministers 2026', 'nepal current ministers 2026']
+2026-03-28 01:54:36,465 | INFO | RESEARCHER fetching web results...
+2026-03-28 01:54:58,212 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:54:58,218 | INFO | RESEARCHER done. Claims extracted: 13
+2026-03-28 01:54:58,221 | INFO | WRITER drafting article...
+2026-03-28 01:55:07,476 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:55:07,476 | INFO | WRITER done.
+2026-03-28 01:55:07,490 | INFO | FACT_CHECKER running (attempt 1/2)...
+2026-03-28 01:55:28,194 | INFO | FACT_CHECKER searched 6 claim(s) individually.
+2026-03-28 01:55:55,756 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:55:55,758 | INFO | FACT_CHECKER verdict=pass | Issues=0 | Searches done=7
+2026-03-28 01:55:55,764 | INFO | EDITOR polishing article...
+2026-03-28 01:56:06,163 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 01:56:06,166 | INFO | EDITOR done.
+2026-03-28 01:56:06,167 | INFO | PUBLISHER formatting final output...
+2026-03-28 01:56:25,991 | INFO | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

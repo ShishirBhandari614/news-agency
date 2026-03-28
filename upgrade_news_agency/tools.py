@@ -1,9 +1,47 @@
 from langchain_community.tools import DuckDuckGoSearchResults
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.store.memory import InMemoryStore
-
+from tavily import TavilyClient
+import os
+from dotenv import load_dotenv
+load_dotenv() 
 # ── Search tool ───────────────────────────────────────────────────────────────
-ddg = DuckDuckGoSearchResults(max_results=6, output_format="list")
+# Tavily is the primary search — indexes news within hours, much fresher than DDG.
+# DDG is kept as a silent fallback in case Tavily fails.
+_tavily = TavilyClient(api_key=os.getenv('TAVILY_API_KEY'))
+_ddg = DuckDuckGoSearchResults(max_results=6, output_format='list')  # fallback
+
+print(_tavily)
+
+def search(query: str, max_results: int = 6) -> list:
+    """
+    Search using Tavily with DDG fallback.
+    Returns list of dicts with 'title', 'snippet', 'link' keys.
+    """
+    try:
+        response = _tavily.search(
+            query=query,
+            max_results=max_results,
+            search_depth="advanced",
+            include_answer=False,
+        )
+        results = []
+        for r in response.get("results", []):
+            results.append({
+                "title":   r.get("title", ""),
+                "snippet": r.get("content", ""),
+                "link":    r.get("url", ""),
+            })
+        return results
+    except Exception:
+        try:
+            return _ddg.invoke(query)
+        except Exception:
+            return []
+
+
+# Keep ddg as alias so nothing breaks if imported elsewhere
+ddg = type('DDGCompat', (), {'invoke': staticmethod(lambda q: search(q))})() 
 
 # ── Short-term memory: thread-level checkpointing ─────────────────────────────
 # Saves full graph state at every step for a given thread_id.
