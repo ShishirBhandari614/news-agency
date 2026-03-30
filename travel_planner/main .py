@@ -12,7 +12,6 @@ from tools import (
 
 load_dotenv()
 
-# ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="AI Travel Planner",
     page_icon="✈️",
@@ -20,7 +19,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
@@ -100,7 +98,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif !important; }
 </style>
 """, unsafe_allow_html=True)
 
-# ── Masthead ──────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="masthead">
   <h1>✈️ AI TRAVEL PLANNER</h1>
@@ -108,7 +105,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Session state ─────────────────────────────────────────────────────────────
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "thread_id" not in st.session_state:
@@ -129,7 +125,6 @@ def new_chat():
     st.session_state.messages  = []
 
 
-# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
 
     if st.button("✏️  New Trip", use_container_width=True):
@@ -138,7 +133,6 @@ with st.sidebar:
 
     st.divider()
 
-    # Chat history
     st.caption("**Past Trips**")
     threads = get_all_threads()
     if threads:
@@ -165,7 +159,6 @@ with st.sidebar:
 
     st.divider()
 
-    # Travel preferences
     prefs = get_travel_prefs()
     st.caption("**Your Travel Preferences**")
     with st.expander("⚙️ Edit Preferences", expanded=False):
@@ -190,7 +183,6 @@ with st.sidebar:
 
     st.divider()
 
-    # Past destinations
     st.caption("**Previously Planned**")
     past = get_past_destinations()
     if past:
@@ -210,7 +202,6 @@ with st.sidebar:
         st.rerun()
 
 
-# ── Pipeline status bar ───────────────────────────────────────────────────────
 STEPS = ["planner", "researcher", "itinerary_builder", "constraint_checker", "reviewer"]
 
 def render_pipeline(current: str = ""):
@@ -224,7 +215,6 @@ def render_pipeline(current: str = ""):
 render_pipeline()
 
 
-# ── Result renderer ───────────────────────────────────────────────────────────
 def render_result(state: dict):
     dest   = state.get("destination", "?")
     days   = state.get("days", "?")
@@ -270,6 +260,10 @@ def render_result(state: dict):
         if state.get("practical_tips"):
             st.markdown("**Practical Tips:**")
             st.markdown(state["practical_tips"])
+        if state.get("cost_context") and "No real price" not in state["cost_context"]:
+            st.markdown("---")
+            st.markdown("**💰 Real Price Data (Numbeo)**")
+            st.code(state["cost_context"], language=None)
 
     with tabs[2]:
         daily_plan = state.get("daily_plan") or []
@@ -361,7 +355,6 @@ for msg in st.session_state.messages:
             render_result(msg)
 
 
-# ── Main input ────────────────────────────────────────────────────────────────
 prefill = st.session_state.pop("prefill_input", None)
 user_input = st.chat_input("Describe your trip… e.g. 5 days in Tokyo, medium budget, love street food")
 
@@ -390,6 +383,7 @@ if topic:
         "top_attractions":      None,
         "local_food":           None,
         "practical_tips":       None,
+        "cost_context":         None,
         "daily_plan":           None,
         "budget_breakdown":     None,
         "constraint_report":    None,

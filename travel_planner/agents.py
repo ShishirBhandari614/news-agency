@@ -11,9 +11,8 @@ from langchain_core.runnables import RunnableConfig
 from langgraph.store.base import BaseStore
 
 from state import TravelState
-from tools import ddg, build_memory_context, record_trip, record_run
+from tools import ddg, build_memory_context, record_trip, record_run, get_city_costs, format_cost_context
 
-# ── Logging ───────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -34,9 +33,6 @@ def _log(state: TravelState, message: str) -> TravelState:
     log.append(f"[{datetime.now().strftime('%H:%M:%S')}] {message}")
     state["execution_log"] = log
     return state
-
-
-# ── Prompts ───────────────────────────────────────────────────────────────────
 
 PLANNER_PROMPT = ChatPromptTemplate.from_messages([
     ("system",
@@ -109,6 +105,10 @@ ITINERARY_PROMPT = ChatPromptTemplate.from_messages([
      "- Include must-visit places: {must_visit}\n"
      "- Food preferences: {food_preferences}\n"
      "- Set within_budget=false if total exceeds the budget level.\n"
+     "IMPORTANT — USE REAL PRICE DATA BELOW if available. "
+     "These are actual current prices from Numbeo for this city. "
+     "Use them to calculate realistic per-day and total costs instead of guessing:\n"
+     "{cost_context}\n"
      "Use the research notes and memory context to personalise the plan."),
     ("human",
      "Destination: {destination} | Days: {days} | Travel style: {travel_style}\n"
@@ -147,15 +147,15 @@ REVIEWER_PROMPT = ChatPromptTemplate.from_messages([
     ("system",
      "You are a travel editor. Polish and format the itinerary into a beautiful, practical final travel plan.\n"
      "Structure the output as follows:\n\n"
-     "🌏 TRIP SUMMARY\n"
+     "TRIP SUMMARY\n"
      "Write 2-3 sentences summarising the trip.\n\n"
-     "💰 BUDGET ESTIMATE\n"
+     "BUDGET ESTIMATE\n"
      "List the budget breakdown clearly.\n\n"
-     "🗓 DAY-BY-DAY ITINERARY\n"
+     "DAY-BY-DAY ITINERARY\n"
      "For each day: bold the day title, list activities, meals, and accommodation.\n\n"
-     "🍜 FOOD & DINING HIGHLIGHTS\n"
+     "FOOD & DINING HIGHLIGHTS\n"
      "3-5 must-try foods or restaurants.\n\n"
-     "💡 TIPS & NOTES\n"
+     "TIPS & NOTES\n"
      "Practical travel tips (visa, transport, safety, best time to visit).\n\n"
      "If there are constraint checker suggestions, incorporate them naturally.\n"
      "Write in a warm, friendly tone. Return the formatted text directly — no JSON."),
@@ -241,6 +241,16 @@ def researcher_node(state: TravelState) -> TravelState:
 
     search_text = "\n".join(all_results) if all_results else "No search results available."
 
+    state = _log(state, f"RESEARCHER fetching real prices from Numbeo for {destination}...")
+    costs     = get_city_costs(destination)
+    cost_text = format_cost_context(costs)
+    if costs:
+        state = _log(state, f"RESEARCHER got real prices: meal={costs.get('meal_cheap','?')}, transport={costs.get('local_transport','?')}")
+    else:
+        state = _log(state, "RESEARCHER could not fetch Numbeo prices — will use LLM estimates")
+
+    state["cost_context"] = cost_text
+
     chain  = RESEARCHER_PROMPT | llm
     output = chain.invoke({
         "destination":    destination,
@@ -291,6 +301,7 @@ def itinerary_builder_node(state: TravelState) -> TravelState:
         "top_attractions":      ", ".join(state.get("top_attractions") or []),
         "local_food":           ", ".join(state.get("local_food") or []),
         "memory_context":       state.get("memory_context", ""),
+        "cost_context":         state.get("cost_context", "No real price data available."),
     })
 
     try:
@@ -361,7 +372,6 @@ def reviewer_node(state: TravelState, config: RunnableConfig, *, store: BaseStor
     report      = state.get("constraint_report") or {}
     suggestions = "\n".join(f"- {s}" for s in report.get("suggestions", [])) or "None"
 
-    # Format daily plan for prompt
     daily_plan = state.get("daily_plan") or []
     daily_text = ""
     for d in daily_plan:
@@ -392,7 +402,6 @@ def reviewer_node(state: TravelState, config: RunnableConfig, *, store: BaseStor
 
     state["final_plan"] = output.content
 
-    # Save to long-term memory
     record_trip(
         destination=state.get("destination", ""),
         days=state.get("days", 5),
@@ -404,9 +413,6 @@ def reviewer_node(state: TravelState, config: RunnableConfig, *, store: BaseStor
     state = _log(state, "REVIEWER done. Trip plan complete ✓")
     state["status"] = "done"
     return state
-
-
-# ── Conditional routing ───────────────────────────────────────────────────────
 
 def route_after_constraint_check(state: TravelState) -> str:
     report        = state.get("constraint_report") or {}

@@ -12,7 +12,6 @@ from tools import (
 
 load_dotenv()
 
-# ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="AI Newsroom",
     page_icon="🗞️",
@@ -20,7 +19,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
@@ -105,7 +103,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif !important; }
 </style>
 """, unsafe_allow_html=True)
 
-# ── Masthead ──────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="masthead">
   <h1>🗞 THE AI NEWSROOM</h1>
@@ -113,32 +110,23 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Session state ─────────────────────────────────────────────────────────────
-# messages: list of dicts for the current chat window
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# thread_id: identifies the current chat session for the checkpointer
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = str(uuid.uuid4())
 
-# all_threads_cache: local dict {thread_id: messages} so switching tabs is instant
 if "threads_cache" not in st.session_state:
     st.session_state.threads_cache = {}
 
-
-# ── Helper: switch to a thread ────────────────────────────────────────────────
 def switch_thread(thread_id: str):
     """Save current chat to cache, load the selected thread."""
-    # Save current messages into cache before switching
+    
     st.session_state.threads_cache[st.session_state.thread_id] = st.session_state.messages
 
-    # Switch thread
     st.session_state.thread_id = thread_id
 
-    # Load messages from cache if available, else start empty
     st.session_state.messages = st.session_state.threads_cache.get(thread_id, [])
-
 
 def new_chat():
     """Save current thread to cache and open a blank new thread."""
@@ -146,18 +134,14 @@ def new_chat():
     st.session_state.thread_id = str(uuid.uuid4())
     st.session_state.messages = []
 
-
-# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
 
-    # ── New Chat button ───────────────────────────────────────────────────────
     if st.button("✏️  New Chat", use_container_width=True):
         new_chat()
         st.rerun()
 
     st.divider()
 
-    # ── Chat history list (like ChatGPT) ──────────────────────────────────────
     st.caption("**Chats**")
     threads = get_all_threads()
 
@@ -176,7 +160,7 @@ with st.sidebar:
             with col_del:
                 if st.button("🗑", key=f"del_{tid}"):
                     delete_thread(tid)
-                    # If deleting active thread, open new chat
+                    
                     if tid == st.session_state.thread_id:
                         new_chat()
                     if tid in st.session_state.threads_cache:
@@ -187,7 +171,6 @@ with st.sidebar:
 
     st.divider()
 
-    # ── Style preferences ─────────────────────────────────────────────────────
     prefs     = get_style_prefs()
     has_prefs = bool(prefs.get("tone"))
 
@@ -219,7 +202,6 @@ with st.sidebar:
 
     st.divider()
 
-    # ── Previously covered topics ─────────────────────────────────────────────
     st.caption("**Previously covered topics**")
     covered = get_covered_topics()
     if covered:
@@ -230,16 +212,13 @@ with st.sidebar:
 
     st.divider()
 
-    # ── Clear everything ──────────────────────────────────────────────────────
     if st.button("🗑 Clear all chats & memory", use_container_width=True):
         st.session_state.messages      = []
         st.session_state.threads_cache = {}
         st.session_state.thread_id     = str(uuid.uuid4())
-        clear_topics()   # clears topics + articles + threads from store
+        clear_topics()   
         st.rerun()
 
-
-# ── Pipeline status bar ───────────────────────────────────────────────────────
 STEPS = ["planner", "researcher", "writer", "fact_checker", "editor", "publisher"]
 
 def render_pipeline(current: str = ""):
@@ -251,8 +230,6 @@ def render_pipeline(current: str = ""):
 
 render_pipeline()
 
-
-# ── Result renderer ───────────────────────────────────────────────────────────
 def render_result(state: dict):
     prefs        = get_style_prefs()
     tone_label   = prefs.get("tone", "—")
@@ -330,8 +307,6 @@ def render_result(state: dict):
             unsafe_allow_html=True,
         )
 
-
-# ── Render current chat messages ──────────────────────────────────────────────
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         if msg["role"] == "user":
@@ -339,8 +314,6 @@ for msg in st.session_state.messages:
         else:
             render_result(msg)
 
-
-# ── Main input ────────────────────────────────────────────────────────────────
 if topic := st.chat_input("Enter a news topic…"):
 
     is_first_message = len(st.session_state.messages) == 0
@@ -389,10 +362,9 @@ if topic := st.chat_input("Enter a news topic…"):
 
     st.session_state.messages.append({"role": "assistant", **final_state})
 
-    # Register thread in store on first message of this thread
     if is_first_message:
         register_thread(st.session_state.thread_id, topic.strip())
-        # Also save to cache
+        
         st.session_state.threads_cache[st.session_state.thread_id] = st.session_state.messages
 
     st.rerun()

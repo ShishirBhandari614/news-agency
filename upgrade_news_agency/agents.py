@@ -3,7 +3,7 @@ import logging
 from datetime import datetime
 
 from dotenv import load_dotenv
-load_dotenv()  # Must run before ChatOpenAI is instantiated
+load_dotenv()  
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -13,7 +13,6 @@ from langgraph.store.base import BaseStore
 from state import NewsState
 from tools import ddg, build_memory_context, record_topic, record_run, save_article_context
 
-# ── Logging / Observability ──────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -27,16 +26,12 @@ logger = logging.getLogger("newsroom")
 MAX_REVISIONS = 2
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.4)
 
-
 def _log(state: NewsState, message: str) -> NewsState:
     logger.info(message)
     log = list(state.get("execution_log") or [])
     log.append(f"[{datetime.now().strftime('%H:%M:%S')}] {message}")
     state["execution_log"] = log
     return state
-
-
-# ── Prompts ───────────────────────────────────────────────────────────────────
 
 PLANNER_PROMPT = ChatPromptTemplate.from_messages([
     ("system",
@@ -125,17 +120,10 @@ PUBLISHER_PROMPT = ChatPromptTemplate.from_messages([
     ("human", "Publication date: {today}.\nEdited article:\n{edited}"),
 ])
 
-
-# ── Nodes ─────────────────────────────────────────────────────────────────────
-# Each node that needs long-term memory accepts (state, config, *, store).
-# LangGraph injects `store` automatically when the graph is compiled with store=.
-# Short-term (thread) state is managed transparently by the checkpointer.
-
 def planner_node(state: NewsState, config: RunnableConfig, *, store: BaseStore) -> NewsState:
     state["status"] = "planning"
     state = _log(state, f"PLANNER starting — topic: {state['topic']}")
 
-    # Pull long-term memory context from the store
     memory_context = build_memory_context(state["topic"])
     state["memory_context"] = memory_context
 
@@ -167,7 +155,6 @@ def planner_node(state: NewsState, config: RunnableConfig, *, store: BaseStore) 
     state = _log(state, f"PLANNER done. Format={state['output_format']} | Queries={state['research_queries']}")
     return state
 
-
 def researcher_node(state: NewsState) -> NewsState:
     state["status"] = "researching"
     state = _log(state, "RESEARCHER fetching web results...")
@@ -176,10 +163,9 @@ def researcher_node(state: NewsState) -> NewsState:
     current_year = _date.today().year
     all_results = []
 
-    # Remove any old year references from queries and force current year
     import re
     for query in (state.get("research_queries") or [state["topic"]])[:3]:
-        # Strip any 4-digit years from the query and replace with current year
+        
         query_clean = re.sub(r'\b20\d{2}\b', '', query).strip()
         query_clean = f"{query_clean} {current_year}"
         try:
@@ -189,7 +175,6 @@ def researcher_node(state: NewsState) -> NewsState:
         except Exception:
             pass
 
-    # Also always do one direct search with topic + current year as safety net
     try:
         direct = ddg.invoke(f"{state['topic']} {current_year}")
         for r in direct:
@@ -221,7 +206,6 @@ def researcher_node(state: NewsState) -> NewsState:
     state = _log(state, f"RESEARCHER done. Claims extracted: {len(state.get('extracted_claims') or [])}")
     return state
 
-
 def writer_node(state: NewsState) -> NewsState:
     state["status"] = "writing"
     state = _log(state, "WRITER drafting article...")
@@ -241,7 +225,6 @@ def writer_node(state: NewsState) -> NewsState:
     state = _log(state, "WRITER done.")
     return state
 
-
 def fact_checker_node(state: NewsState) -> NewsState:
     state["status"] = "fact_checking"
     revision_count = (state.get("revision_count") or 0) + 1
@@ -252,15 +235,12 @@ def fact_checker_node(state: NewsState) -> NewsState:
     current_year = _date.today().year
     claims = state.get("extracted_claims") or []
 
-    # ── Search per claim for targeted evidence ────────────────────────────────
-    # Instead of one broad topic search, we search once per claim so each claim
-    # gets its own dedicated evidence. Cap at 6 claims to avoid too many calls.
     evidence_map: dict[str, str] = {}
 
     search_targets = claims[:6] if claims else [state["topic"]]
 
     for target in search_targets:
-        # Build a focused query: claim text + year for freshness
+        
         query = target if len(target) < 80 else target[:80]
         if str(current_year) not in query:
             query = f"{query} {current_year}"
@@ -276,7 +256,6 @@ def fact_checker_node(state: NewsState) -> NewsState:
 
     state = _log(state, f"FACT_CHECKER searched {len(evidence_map)} claim(s) individually.")
 
-    # Also do one broad topic search to catch anything the claim searches missed
     try:
         broad_results = ddg.invoke(f"{state['topic']} {current_year}")
         broad_text = "\n".join(
@@ -286,7 +265,6 @@ def fact_checker_node(state: NewsState) -> NewsState:
     except Exception:
         broad_text = "No broad results available."
 
-    # Combine: per-claim evidence + broad evidence
     combined_evidence = "=== PER-CLAIM EVIDENCE ===\n"
     for claim, evidence in evidence_map.items():
         combined_evidence += f"\nClaim: {claim}\nEvidence:\n{evidence}\n"
@@ -312,7 +290,6 @@ def fact_checker_node(state: NewsState) -> NewsState:
     state = _log(state, f"FACT_CHECKER verdict={verdict} | Issues={len(report.get('issues', []))} | Searches done={len(evidence_map)+1}")
     return state
 
-
 def editor_node(state: NewsState) -> NewsState:
     state["status"] = "editing"
     state = _log(state, "EDITOR polishing article...")
@@ -330,7 +307,6 @@ def editor_node(state: NewsState) -> NewsState:
     state = _log(state, "EDITOR done.")
     return state
 
-
 def publisher_node(state: NewsState, config: RunnableConfig, *, store: BaseStore) -> NewsState:
     state["status"] = "done"
     state = _log(state, "PUBLISHER formatting final output...")
@@ -344,7 +320,6 @@ def publisher_node(state: NewsState, config: RunnableConfig, *, store: BaseStore
     })
     state["final"] = output.content
 
-    # Write to long-term store: topic, run history, AND full article context
     record_topic(state["topic"])
     record_run(
         topic=state["topic"],
@@ -362,13 +337,10 @@ def publisher_node(state: NewsState, config: RunnableConfig, *, store: BaseStore
     state = _log(state, "PUBLISHER done. Run complete ✓")
     return state
 
-
-# ── Conditional routing ───────────────────────────────────────────────────────
-
 def route_after_fact_check(state: NewsState) -> str:
     report = state.get("fact_report") or {}
     verdict = report.get("verdict", "pass")
-    # revision_count was already incremented inside fact_checker_node
+    
     revision_count = state.get("revision_count") or 0
 
     if verdict == "fail" and revision_count < MAX_REVISIONS:
